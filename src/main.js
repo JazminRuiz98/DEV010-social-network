@@ -10,9 +10,13 @@ import home from './routes/home.js';
 import login from './routes/login.js';
 import signin from './routes/userRegister.js';
 import error from './routes/error.js';
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import feed from './routes/feed.js';
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import likes from './routes/likes.js';
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import posts from './routes/posts.js';
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import profile from './routes/profile.js';
 
 // Crear una variable con arreglo de objetos para tener ruta e identificar a qué elemento pertenece
