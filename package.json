@@ -14,12 +14,19 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
-    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
-    "test": "jest --coverage",
+    "_pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
+    "test": "jest --env=jsdom --coverage",
     "dev": "vite dev src",
     "start": "npm run dev",
     "build": "vite build",
     "preview": "vite preview"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/mocks/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/src/mocks/fileMock.js"
+    }
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
@@ -28,7 +35,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^25.3.0",
     "htmlhint": "^1.0.0",
-    "jest": "^27.0.1",
+    "jest": "^27.5.1",
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^14.1.0",
     "stylelint-config-recommended": "^6.0.0",

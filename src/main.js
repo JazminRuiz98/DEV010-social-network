@@ -1,19 +1,30 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { myFunction } from './lib/index.js';
+// import { myFunction } from './lib/index.js';
+// myFunction();
 
 // Importamos los archivos js que permitirán la visualización
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase/firebaseConfig';
 import home from './routes/home.js';
 import login from './routes/login.js';
+import signin from './routes/userRegister.js';
 import error from './routes/error.js';
+import feed from './routes/feed.js';
+import likes from './routes/likes.js';
+import posts from './routes/posts.js';
+import profile from './routes/profile.js';
 
-myFunction();
-
-// Crear una variable con arreglo de objetos para tener ruta e identificar a qué eemento pertenece
+// Crear una variable con arreglo de objetos para tener ruta e identificar a qué elemento pertenece
 const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
+  { path: '/userRegister', component: signin },
   { path: '/error', component: error },
+  { path: '/feed', component: feed },
+  { path: '/likes', component: likes },
+  { path: '/posts', component: posts },
+  { path: '/profile', component: profile },
 ];
 
 // Definir ruta por defecto
@@ -50,3 +61,16 @@ window.onpopstate = () => {
 
 // Invocamos a la función con un argumento con la ruta o la ruta por defecto
 navigateTo(window.location.pathname || defaultRoute);
+
+// const user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    const uid = user.uid;
+    console.log(uid);
+    // ...
+  } else {
+    navigateTo('/login');
+  }
+});

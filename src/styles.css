@@ -1,0 +1,511 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+/* Header */
+
+#header {
+    background-color: rgb(197, 175, 221);
+    width: 100vw;
+    height: 15vh;
+    color: rgb(60, 14, 115);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "userName userName pictureUser"
+    "profileName profileName pictureUser"
+    "specialText specialIcon pictureUser";
+}
+
+.userName {
+    grid-area: userName;
+    font-size: 1.8rem;
+}
+
+.profileName {
+    grid-area: profileName;
+    font-weight: 100;
+}
+
+.pictureUser {
+    grid-area: pictureUser;
+    /* border-color: linear-gradient(to right, rgb(250, 33, 175), rgb(60, 14, 115)); */
+    border-radius: 50%;
+    height: 10vh;
+    justify-self: flex-end;
+}
+
+.specialText {
+    grid-area: specialText;
+    font-weight: 700;
+    color: rgb(250, 33, 175);
+    cursor: pointer;
+}
+
+.buttonSignoff {
+    height: 2rem;
+}
+
+/* Nav Bar */
+
+#navbar {
+    background: linear-gradient(to right, rgb(250, 33, 175), rgb(60, 14, 115));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    z-index: 3;
+    top: 90vh;
+}
+
+.iconNav {
+    height: 15vh;
+    margin: 1rem;
+}
+
+.imgNav {
+    height: 2rem;
+    cursor: pointer;
+}
+
+.btnNav {
+    background-color: white;
+    border-radius: 0.5rem;
+    border: none;
+    height: 2rem;
+    width: 4rem;
+}
+
+.btnLikes {
+    background-image: url(../assets/likeLineaBlanca.png);
+    width: 2rem;
+    border: none;
+}
+
+/* Feed */
+
+#feedSection {
+    width: auto;
+    height: auto;
+    padding-bottom: 10vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Archivo', sans-serif;
+}
+
+/* Likes */
+
+#likesSection {
+    width: auto;
+    height: auto;
+    padding-bottom: 10vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Archivo', sans-serif;
+}
+
+/* Profile */
+
+#profileSection {
+    width: auto;
+    height: auto;
+    padding-bottom: 10vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Archivo', sans-serif;
+}
+
+/* Posts */
+
+#main {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(230, 223, 238);
+    min-height: 90vh;
+    height: auto;
+    width: 100vw;
+}
+
+#postsSection {
+    width: auto;
+    height: auto;
+    padding-bottom: 10vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Archivo', sans-serif;
+    align-items: center;/*cambio*/
+}
+
+#btnPost {
+    background: linear-gradient(to right, rgb(250, 33, 175), rgb(60, 14, 115));
+    color: white;
+    width: 6rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    border: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: large;
+}
+
+.inputPost {
+    width: 18rem;
+    height: 6rem;
+    border-radius: 1.5rem;
+    border-color: rgb(60, 14, 115);
+    padding: 1rem;
+    margin: 1rem;
+}
+
+#postContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+}
+
+#myPostsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+}
+
+.post-card {
+    background-color: white;
+    width: 18rem;
+    height: 8.2rem;/*6.5rem;*/
+    border-radius: 1.5rem;
+    border-color: rgb(60, 14, 115);
+    border-style: solid;
+    padding: 1rem;
+    margin: 1.5rem;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: 
+    "foto name name date"
+    "post post post post"
+    "post post post post";
+}
+
+.user-img{
+    grid-area: foto;
+    border-radius: 5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.user-name {
+    grid-area: name;
+    color: rgb(250, 33, 175);
+    font-size: 1rem;
+    font-weight: 400;
+    justify-self: flex-start;
+    margin-left: -1.6rem;/*cambio*/
+}
+
+.date {
+    grid-area: date;
+    color:  rgb(60, 14, 115);
+    font-size: 0.8rem;
+    justify-self: flex-end;
+}
+
+.post {
+    grid-area: post;
+    font-size: 1rem;
+    text-align: center;/*cambio*/
+    margin-top: 0.5rem;
+    overflow: scroll;
+}
+
+.like {
+    cursor: pointer;
+}
+
+.likesCount {
+    font-size: 0.8rem;
+    color: rgb(250, 33, 175);
+    margin-left: -2rem;
+    margin-top: 0.4rem;
+}
+
+.btn-delete {
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: rgb(250, 33, 175);
+    color: white;
+}
+
+.btn-edit {
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-edit:hover {
+    background-color: rgb(250, 33, 175);
+    color: white;
+}
+
+.btn-editSave {
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-editSave:hover {
+    background-color: rgb(250, 33, 175);
+    color: white;
+}
+
+.btn-cancel {
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: rgb(250, 33, 175);
+    color: white;
+}
+
+/* Login */
+
+#loginSection {
+    background-color: rgb(230, 223, 238);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+}
+
+.icon {
+    height: 20vh;
+    margin: 2rem;
+}
+
+.titles {
+    font-family: 'Archivo', sans-serif;
+    color: rgb(250, 33, 175);
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.text {
+    font-size: 0.9rem;
+}
+
+.link {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgb(250, 33, 175);
+}
+
+.link:hover {
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.linkReset:hover {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(250, 33, 175);
+    cursor: pointer;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+    font-size: 0.9rem;
+}
+
+.input {
+    width: 18rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    border-color: rgb(60, 14, 115);
+    padding: 1rem;
+}
+
+#btnLogin {
+    background: linear-gradient(to right, rgb(250, 33, 175), rgb(60, 14, 115));
+    color: white;
+    width: 18rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    border: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: large;
+    cursor: pointer;
+}
+
+.googleButton {
+    background-image: url(./assets/google_assets/btn_google_signin_light_normal_web.png);
+    width: 191px;
+    height: 46px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(230, 223, 238);
+    cursor: pointer;
+
+    /* border: 2px solid transparent; /* Establece un borde transparente para que se aplique el gradiente */
+    /* border-image: linear-gradient(to right, rgb(250, 33, 175), rgb(60, 14, 115)); /* Define el gradiente como la imagen de fondo del borde */
+    /* border-image-slice: 1; /* Slice de 1 para que el gradiente se aplique al borde completo */
+}
+
+.googleButton:hover {
+    background-image: url(./assets/google_assets/btn_google_signin_light_pressed_web.png);
+    width: 191px;
+    height: 46px;
+}
+
+/* User Register */
+
+#registerSection {
+    background-color: rgb(230, 223, 238);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+    font-size: 0.9rem;
+}
+
+/* Home */
+
+#homeSection {
+    background-image: url(./assets/fondo.jpg);
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnHome {
+    background: rgba(255, 255, 255, 0.326);
+    color: white;
+    width: 11rem;
+    height: 4rem;
+    border-radius: 2rem;
+    border: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: large;
+}
+
+#btnHome:hover {
+    background-color: white;
+    color: rgb(60, 14, 115);
+}
+
+.imgHome {
+    height: 80vh;
+    padding: 5rem;
+}
+
+/* Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 50%;
+    height: 50%;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgb(60, 14, 115);
+    border-radius: 1rem;
+    background: rgb(60, 14, 115);
+    color: white;
+}
+
+.close-button {
+    cursor: pointer;
+    background-color: rgb(250, 33, 175);
+    color: white;
+    font-family: 'Archivo', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border-style: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.modal-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 4rem;
+    color: white;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 400;
+    font-size: large;
+}
+
+/* Likes */
+
+.like {
+    width: 1.5rem;
+}
