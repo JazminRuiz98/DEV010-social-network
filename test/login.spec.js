@@ -1,5 +1,4 @@
 import login from '../src/routes/login';
-// import navigateTo from '../src/main';
 import { googleCount, resetEmail, signIn } from '../src/firebase/firebaseConfig';
 
 jest.mock('../src/firebase/firebaseConfig', () => ({
@@ -9,7 +8,6 @@ jest.mock('../src/firebase/firebaseConfig', () => ({
 }));
 
 describe('login', () => {
-  let dirige = '';
   let component;
 
   it('debería ser una función', () => {
@@ -66,14 +64,17 @@ describe('login', () => {
     expect(mockNavigateTo).toHaveBeenCalledWith('/feed');
   });
 
-  it('Dando click al botón debe dirigirse a /userRegister', () => {
-    function navigateTo(ruta) {
-      // Define una función simulada para navigateTo que almacene la ruta a la que se dirigió.
-      dirige = ruta;
-    }
-    component = login(navigateTo);
-    component.querySelector('.link').click();
-    expect(dirige).toBe('/userRegister');
+  it('Dando click al enlace "Aqui" debe dirigirse a /userRegister', () => {
+    // Crea un mock para la función navigateTo
+    const mockNavigateTo = jest.fn();
+    // Crea el componente home llamando a la función mockNavigateTo
+    component = login(mockNavigateTo);
+    // Encuentra el link de registro dentro del componente
+    const linkRegister = component.querySelector('.link');
+    // Simula un click en el link.
+    linkRegister.click();
+    // Verifica que la función navigateTo se haya llamado con la ruta correcta
+    expect(mockNavigateTo).toHaveBeenCalledWith('/userRegister');
   });
 
   it('Dando click al link "¿Olvidaste tu contraseña?" debe llamar a resetEmail', async () => {

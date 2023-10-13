@@ -38,9 +38,6 @@ function profile(navigateTo) {
 
   const profileContainer = document.createElement('div');
   const profileTitle = document.createElement('p');
-  // const nameTitle = document.createElement('div');
-  // const name = document.createElement('div');
-  // const nameInput = document.createElement('input');
 
   const nav = document.createElement('nav');
   const menuContainer = document.createElement('div');
@@ -75,7 +72,6 @@ function profile(navigateTo) {
   name.textContent = getAuth().currentUser?.displayName;
   profileName.textContent = getAuth().currentUser?.email;
   pictureUser.src = auth.currentUser?.photoURL ? auth.currentUser?.photoURL : generalUser;
-  // buttonEdit.src = iconoEditar;
 
   profileTitle.textContent = 'PERFIL DE USUARIA:';
 

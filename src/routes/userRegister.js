@@ -46,17 +46,6 @@ function userRegister(navigateTo) {
   inputPass.placeholder = 'Contraseña';
   inputName.placeholder = 'Nombre de usuario';
 
-  // Función para crear un perfil de usuario en Firestore
-  /* function createProfile(userId, name, email) {
-    const userRef = doc(collection(db, 'users'), userId);
-    const userData = {
-      userId,
-      name,
-      email,
-    };
-    return setDoc(userRef, userData);
-  } */
-
   // Signing users
   buttonRegister.addEventListener('click', (e) => {
     e.preventDefault();
@@ -89,19 +78,8 @@ function userRegister(navigateTo) {
           console.log(error);
         });
 
-        // Aquí se creaba otra colección para usuarios
-        /* createProfile(user.uid, name, email)
-          .then(() => {
-            console.log('Perfil de usuario creado con éxito');
-          })
-          .catch((error) => {
-            console.error('Error al crear el perfil de usuario: ', error);
-          }); */
-
         emailVerification(user)
           .then(() => {
-            // console.log('Verificando email');
-            // alert('Correo de verificación enviado');
             const message = 'Correo de verificación enviado. Revisa tu correo, valídalo e ingresa a tu cuenta desde la página de inicio.';
             const modal = createModal(message);
             showModal(modal);
@@ -123,37 +101,6 @@ function userRegister(navigateTo) {
         navigateTo('/feed');
       });
   });
-
-  /*
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    googleCount()
-      .then((googleUser) => {
-      // Una vez autenticado con Google obtener información del usuario
-        const name = googleUser.displayName;
-        const email = googleUser.email;
-        // const avatar = googleUser.photoURL;
-
-        // Obtén el UID del usuario actual o null si no está autenticado
-        const userId = auth.currentUser ? auth.currentUser.uid : null;
-        if (userId) {
-        // Luego, crea el perfil en Firestore
-        createProfile(name, email)
-          .then(() => {
-            console.log('Perfil de usuario creado con éxito');
-            navigateTo('/feed');
-          })
-          .catch((error) => {
-            console.error('Error al crear el perfil: ', error);
-          });
-        } else {
-          console.error('No se pudo obtener el UID del usuario');
-        }
-      })
-      .catch((error) => {
-        console.error('Error al autenticarse con Google: ', error);
-      });
-  }); */
 
   // Link a Login
   textLogin.textContent = 'Si ya tienes una cuenta ';

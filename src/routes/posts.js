@@ -11,14 +11,6 @@ import navHome from '../assets/iconos/icono-home-off.png';
 import navLikes from '../assets/iconos/icono-likes-off.png';
 import navPosts from '../assets/iconos/icono-post-on.png';
 import navProfile from '../assets/iconos/icono-profile-off.png';
-// import { async } from 'regenerator-runtime';
-// import btnEditar from '../assets/iconos/icono-editar.png';
-// import btnBorrar from '../assets/iconos/icono-cerrar.png';
-
-// const userLogin = localStorage.getItem('user');
-// console.log(userLogin);
-// export const user = auth.currentUser;
-// console.log(user);
 
 // Crear una card que contenga cada post
 export function createPostCard(data) { /* cambio de content por data */
@@ -39,7 +31,6 @@ export function createPostCard(data) { /* cambio de content por data */
   const date = data.createdAt.toDate();
   dateElement.textContent = `${date.toLocaleDateString()}`;
   // Convierte fecha a una cadena legible
-  // console.log('fecha de creación: ', date);
 
   const buttonEdit = document.createElement('button');
   buttonEdit.classList.add('btn-edit');
@@ -132,7 +123,6 @@ export function createPostCard(data) { /* cambio de content por data */
   });
   const buttonLike = document.createElement('img');
   buttonLike.classList.add('like');
-  // buttonLike.src = data.likes.includes(auth.currentUser.uid) ? likeRosa : likeGris;
   // Verifica si 'likes' está definido y es un arreglo antes de usarlo
   if (Array.isArray(data.likes)) {
     // Comprueba si el usuario actual (auth.currentUser.uid) está en el arreglo 'likes'
@@ -148,11 +138,6 @@ export function createPostCard(data) { /* cambio de content por data */
   const likesCount = document.createElement('span');
   likesCount.classList.add('likesCount');
   // likesCount.textContent = data.likesCount /* `${doc[0].likes.length}` */;
-  
-  // Actualiza likesCount en el elemento HTML
-  /* const updateLikesCount = (count) => {
-    likesCount.textContent = count;
-  }; */
 
   // Verifica si data.likesCount tiene un valor válido
   if (typeof data.likesCount === 'number') {
@@ -195,7 +180,6 @@ function loadUserPosts(myPosts) {
   onSnapshot(postsCollection, (querySnapshot) => {
     myPosts.innerHTML = '';
     querySnapshot.forEach((doc) => {
-      // console.log(auth.currentUser.uid);
       const data = doc.data(); // Transforma objeto de Firebase a objeto de JS
       if (data.userID === auth.currentUser.uid) {
         const postCard = createPostCard({ ...data, id: doc.id });
@@ -212,12 +196,6 @@ export function addPost({
   return new Promise((resolve, reject) => {
   // al resolver la promesa resolve indica que la promesa se resuelve correctamente,
   // reject  indica que la promesa ha sido rechazada
-
-    /* const currentUser = auth.currentUser;
-    if (!currentUser) {
-      reject(new Error('El usuario no está autenticado.'));
-      return;
-    } */
 
     addDoc(collection(db, 'posts'), {
     // Añade un documento a la colección posts en la base de datos en firestore
@@ -309,23 +287,11 @@ function posts(navigateTo) {
   myPostsTitle.textContent = 'TUS POSTS:';
 
   // Llama a la función loadPosts y pásale myPosts como argumento
-  // loadPosts(myPosts, auth.currentUser.uid);
   loadUserPosts(myPosts);
 
   buttonPost.addEventListener('click', () => {
     const content = postInput.value;
     if (content) {
-      // Obtener datos del usuario actual
-      // const currentUser = auth.currentUser;
-
-      // Verificar si el usuario está autenticado y tiene los datos necesarios
-      /* if (currentUser && currentUser.displayName && currentUser.photoURL) {
-        const userName = currentUser.displayName;
-        const avatar = currentUser.photoURL; */
-
-      // Crea la tarjeta del post y agrega al contenedor de tus posts
-      // createPostCard(content, userName, avatar, myPosts);
-      // myPostsContainer.appendChild(postCard);
 
       addPost({
         avatar: auth.currentUser.photoURL, // ? auth.currentUser.photoURL : 'https://img.freepik.com/vector-gratis/ilustracion-icono-avatar-usuario_53876-5907.jpg?w=826&t=st=1695778431~exp=1695779031~hmac=d4122e27770a7ad67f3ab2561940aeaed1aefd69914d149cf76a9928d1f5bd8c',
@@ -343,9 +309,6 @@ function posts(navigateTo) {
         .catch((error) => {
           console.error('Error al agregar la publicación: ', error);
         });
-      // Crea la tarjeta del post y agrega al contenedor de tus posts
-      // createPostCard(content, myPosts);
-      // myPostsContainer.appendChild(postCard);
     }
   });
 
@@ -381,75 +344,4 @@ function posts(navigateTo) {
   section.append(header, main, menuContainer);
   return section;
 }
-// export { createPostCard };
 export default posts;
-
-// import useUser from "hookss/useUser"
-// import AppLayout from "components/AppLayout"
-// import Button from "components/AppLayouButton"
-// import {useState} from 'react' 8.3K
-// import {addDevit } from "src/firebaseConfig"
-// {useRouter} from "next/router"
-
-// const COMPOSE_SATATES ={
-//   USER-nOT_KNOW:0,
-//   lOADING: 0,
-//   SUCCES: 1,
-//   ERROR: -1,
-// }
-
-// export default function composeTweet(){
-//   const [message, setMessage] = useState("")
-//   const [status, setStatus] = useState(Compose_States.User_NOT_KNOWN)
-//   const user =useUser()
-//   const router = useRouter()
-
-//   const handleChange = (event) => {
-//     const {value} = event.target
-//     setMessage(value)
-//   }
-//   const handleSubmit = (event) => {
-//     event.preventDefault()
-// setStatus(COMPOSE_STATES.LOADING)
-//     addDevit({
-//       avatar: user.avatar,
-//       content: message,
-//       userId: user.uid,
-//       username: user.userName
-// }).then(() =>{
-//  router.push('/home')
-// }.catch(err=>{
-// console.error(err)
-// setStatus(COMPOSE_STATES.ERROR)
-// })
-
-// const isButtonDisabled = !message.length || status = COMPOSE_STATES.LOADING
-// return (
-// <>
-// <AppLayout>
-//   <form onSubmit={handleSubmit}>
-//     <textarea
-// onChange={handleChange}
-// placeholder="¿Qué está pasando?"
-// value={message}></textarea>
-//     <div>
-//       <Button disabled={!message.length}>Devitear</Button>
-//     </div>
-//   </form>
-// </AppLayout>)};
-
-// export const fechLatestPots = () => {
-//   return db.collection("posts")
-//   .get()
-//   .then((snapshot) => {
-//     return snapshot.docs.map(doc => {
-//       const data= doc.data()
-//       const id = doc.id
-
-//       return {
-//         ... data,
-//         id,
-//       }
-//     })
-//   })
-// }

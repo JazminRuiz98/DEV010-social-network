@@ -99,18 +99,3 @@ export const removeLike = async (postId, userId) => {
     console.error('Error al remover el like:', error);
   }
 };
-
-// En video usando firebase firestore midu.dev (1:00:41) habla de que el usuario en firebase tiene
-// una propiedad que se llama uid (unit ID) que implica que tiene un identificador unico para ese
-// usuario, también que lo podemos extrar de firebase y que lo podemos usar ejemplo user.uid
-
-// export addDevit =({avatar, content, userID, userName}) => { return db.collection('posts').add({
-// avatar,
-// content,
-// userID,
-// UserName,
-// createAt: firebase.firestore.Timestamp.fromDate(new Date()),
-// likesCount: 0,
-// sharedCount: 0,
-// })
-// }

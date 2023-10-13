@@ -25,14 +25,17 @@ describe('home', () => {
     expect(imgHome.alt).toBe('New Wave Logo');
   });
 
-  it('click en botón dirige a /login', () => {
-    let dirige = '';
-    function navigateTo(ruta) {
-      // Define una función simulada para navigateTo que almacene la ruta a la que se dirigió.
-      dirige = ruta;
-    }
-    const component = home(navigateTo);
-    component.querySelector('#btnHome').click();
-    expect(dirige).toBe('/login');
+  it('debería llamar a navigateTo al hacer clic en Empezar', () => {
+    let component = '';
+    // Crea un mock para la función navigateTo
+    const mockNavigateTo = jest.fn();
+    // Crea el componente home llamando a la función mockNavigateTo
+    component = home(mockNavigateTo);
+    // Encuentra el botón home (empezar) dentro del componente
+    const btnHome = component.querySelector('#btnHome');
+    // Simula un clic en  el botón home (empezar).
+    btnHome.click();
+    // Verifica que la función navigateTo se haya llamado con la ruta correcta
+    expect(mockNavigateTo).toHaveBeenCalledWith('/login');
   });
 });
